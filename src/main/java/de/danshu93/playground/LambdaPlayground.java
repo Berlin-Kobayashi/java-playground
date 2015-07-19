@@ -3,19 +3,19 @@ package de.danshu93.playground;
 import java.util.HashMap;
 import java.util.Map;
 
-class Playground {
+class LambdaPlayground {
 
     // just playing with lambda expressions
 
-    private interface Lambdaable {
-        public String transform(String master, String... vars);
+    private interface VariadicStringFunction {
+        public String apply(String master, String... vars);
     }
 
     private static enum StringOperation {
         CONCAT, REMOVE, REGEX_MATCHES;
 
-        private static Map<StringOperation, Lambdaable> STRING_OPERATION_2_LAMBDAABLE =
-            new HashMap<StringOperation, Lambdaable>();
+        private static Map<StringOperation, VariadicStringFunction> STRING_OPERATION_2_LAMBDAABLE =
+            new HashMap<StringOperation, VariadicStringFunction>();
 
         static {
             STRING_OPERATION_2_LAMBDAABLE.put(StringOperation.CONCAT, (master, vars) -> {
@@ -25,6 +25,7 @@ class Playground {
                 }
                 return result.toString();
             });
+
             STRING_OPERATION_2_LAMBDAABLE.put(StringOperation.REMOVE, (master, vars) -> {
                 String result = master;
                 for (String var : vars) {
@@ -43,13 +44,13 @@ class Playground {
             });
         }
 
-        private Lambdaable asLambdaable() {
+        private VariadicStringFunction asLambdaable() {
             return STRING_OPERATION_2_LAMBDAABLE.get(this);
         }
 
     }
 
     public static void main(String[] args) {
-        System.out.println(StringOperation.REGEX_MATCHES.asLambdaable().transform("test", "test2"));
+        System.out.println(StringOperation.REGEX_MATCHES.asLambdaable().apply("test", "test2"));
     }
 }
