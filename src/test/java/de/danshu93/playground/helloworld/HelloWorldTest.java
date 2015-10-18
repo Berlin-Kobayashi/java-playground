@@ -12,15 +12,15 @@ import org.junit.Test;
  */
 public class HelloWorldTest extends AbstractSystemOutputStreamTest {
 
-    /**
-     * Tests if {@link HelloWorld} prints 'hello world' to the {@link System}s standard output
-     * stream.
-     */
-    @Test
-    public void helloWorldShouldReturnHelloWorld() {
-        String expected = "hello world";
-        HelloWorld.main(new String[] {});
-        assertEquals(expected, outContent.toString());
-    }
+	/**
+	 * Tests if {@link HelloWorld} prints 'hello world' to the {@link System}s
+	 * standard output stream.
+	 */
+	@Test
+	public void helloWorldShouldReturnHelloWorld() {
+		String expected = "hello world";
+		HelloWorld.main(new String[] {});
+		assertEquals(expected, outContent.toString());
+	}
 
 }
