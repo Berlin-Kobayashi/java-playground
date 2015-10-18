@@ -15,7 +15,7 @@ public class HelloWorld {
      *            not used
      */
     public static void main(String args[]) {
-        System.out.print("hello world");
+        System.out.print("Hello world! :)");
     }
 
 }
